@@ -1,18 +1,12 @@
 # winston-graylog2
 
-A graylog2 transport for [winston][0]. Inspired [winston-mail][1] transport.
+A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport.
 
 ## Installation
 
 ## Usage
 ``` js
   var winston = require('winston');
-
-  //
-  // Requiring `winston-graylog2` will expose
-  // `winston.transports.Graylog2`
-  //
-
   winston.add(require('./winston-graylog2.js').Graylog2, options);
 
 ```
@@ -29,3 +23,4 @@ Options are the following, `to` and `host` are required:
 
 [0]: https://github.com/flatiron/winston
 [1]: https://github.com/wavded/winston-mail
+[2]: http://www.graylog2.org
