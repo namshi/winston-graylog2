@@ -1,8 +1,14 @@
-# winston-graylog2
+# winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
 
 A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport.
 
 ## Installation
+Tested on node-0.6.x, requires npm.
+
+``` sh
+  $ npm install winston
+  $ npm install winston-graylog2
+```
 
 ## Usage
 ``` js
@@ -11,7 +17,7 @@ A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transp
 
 ```
 
-Options are the following, `to` and `host` are required:
+Options are the following:
 
 * __level:__ Level of messages this transport should log. (default: info)
 * __silent:__ Boolean flag indicating whether to suppress output. (default: false)

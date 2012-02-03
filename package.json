@@ -9,7 +9,7 @@
       }],
   "repository": {
     "type": "git",
-    "url": "http://github.com/smithclay/winston-graylog2.git"
+    "url": "http://github.com/flite/winston-graylog2.git"
   },
   "keywords": ["logging", "sysadmin", "tools", "winston", "graylog2"],
   "dependencies": {
