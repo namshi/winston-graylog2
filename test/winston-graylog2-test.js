@@ -1,6 +1,5 @@
 // winston-graylog2-test.js: Tests for instances of the graylog2 transport
 
-
 var vows = require('vows');
 var assert = require('assert');
 var winston = require('winston');
