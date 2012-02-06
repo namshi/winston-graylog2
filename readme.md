@@ -1,6 +1,6 @@
 # winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
 
-A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport.
+A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport and node-graylog[3].
 
 ## Installation
 Tested on node-0.6.x, requires npm.
@@ -30,3 +30,4 @@ Options are the following:
 [0]: https://github.com/flatiron/winston
 [1]: https://github.com/wavded/winston-mail
 [2]: http://www.graylog2.org
+[3]: https://github.com/egorFiNE/node-graylog
