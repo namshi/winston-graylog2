@@ -1,6 +1,6 @@
 # winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
 
-A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport and node-graylog[3].
+A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport and [node-graylog][3].
 
 ## Installation
 Tested on node-0.6.x, requires npm.
@@ -13,7 +13,7 @@ Tested on node-0.6.x, requires npm.
 ## Usage
 ``` js
   var winston = require('winston');
-  winston.add(require('./winston-graylog2.js').Graylog2, options);
+  winston.add(require('winston-graylog2').Graylog2, options);
 
 ```
 
