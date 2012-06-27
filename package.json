@@ -1,7 +1,7 @@
 {
   "name": "winston-graylog2",
   "description": "A graylog2 transport for winston",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "Flite, Inc. http://www.flite.com",
   "contributors": [
       {
