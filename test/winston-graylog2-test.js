@@ -11,7 +11,7 @@ var transport = new (Graylog2)({graylogHostname: 'localhost'});
 function assertGraylog2 (transport) {
   assert.instanceOf(transport, Graylog2);
   assert.isFunction(transport.log);
-};
+}
 
 vows.describe('winston-graylog2').addBatch({
  "An instance of the Mail Transport": {
