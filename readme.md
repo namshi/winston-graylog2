@@ -1,5 +1,7 @@
 # winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
 
+__Official deprecation notice:__ We're no longer activley maintaining this project, sorry! Please contact us if you'd like to take over ownership of this project.
+
 A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport and [node-graylog][3].
 
 ## Installation
