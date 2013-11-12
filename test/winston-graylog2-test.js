@@ -21,6 +21,15 @@ vows.describe('winston-graylog2').addBatch({
    "the log() method": helpers.testNpmLevels(transport, "should log messages to Graylog2", function (ign, err, logged) {
      assert.isTrue(!err);
      assert.isTrue(logged);
-   })
+   }),
+   "should not throw error on circular objects": function () {
+      var a = {};
+      var b = {};
+      a.b = b;
+      b.a = a;
+      assert.doesNotThrow(function(){
+        transport.log( "error", a, b, function(){});
+      }, Error );
+   }
  }
 }).export(module);
