@@ -1,6 +1,14 @@
 # winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
 
-__Official deprecation notice:__ We're no longer activley maintaining this project, sorry! Please contact us if you'd like to take over ownership of this project.
+> This repository has just been transferred to the Namshi organization
+> as we're keen on giving some sort of support to it given 1. it was
+> deprecated (the previous maintainers didn't have the time) 2. we're
+> using graylog2 a lot so... :)
+>
+> Expect us to come up with a few tweaks in the next few weeks
+> (in other words: ping us in Nov 2014)
+>
+> :-)
 
 A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport and [node-graylog][3].
 
