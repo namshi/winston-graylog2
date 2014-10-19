@@ -44,7 +44,7 @@ var logger = new(winston.Logger)({
 * __silent__: Boolean flag indicating whether to suppress output. (default: false)
 * __handleExceptions__: Boolean flag, whenever to handle uncaught exceptions. (default: false)
 * __graylog__:
-  - __servers__; list of greylog2 servers
+  - __servers__; list of graylog2 servers
     * __host__: your server address (default: localhost)
     * __port__: your server port (default: 12201)
   - __hostname__: the name of this host (default: os.hostname())
@@ -56,9 +56,9 @@ example:
 
 ```javascript
 {
-  name: 'Greylog
+  name: 'Graylog'
   level: 'debug',
-  silet: false,
+  silent: false,
   handleExceptions: false,
   graylog: {
     servers: [{host: 'localhost', port: 12201}, {host: 'remote.host', port: 12201}],
@@ -70,9 +70,9 @@ example:
 ```
 
 ## Log Levels
-Suported log level, as from [node-graylog2][2], are the following
+Supported log levels, as from [node-graylog2][2], are the following
 
-Winstone Level | Graylog2 level
+Winston Level | Graylog2 level
 ---------------|---------------
 emerg          | emergency
 alert          | alert
@@ -83,7 +83,7 @@ notice         | notice
 info           | info
 debug          | debug
 
-**All other possibile winston's level, or custome level, will default to `info`**
+**All other possibile winston's level, or custom levels, will default to `info`**
 
 [0]: https://github.com/flatiron/winston
 [1]: http://www.graylog2.org

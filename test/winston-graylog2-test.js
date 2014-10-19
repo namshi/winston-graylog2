@@ -21,7 +21,7 @@ describe('winstone-graylog2', function() {
       assert.ok(typeof winstonGraylog2.log === 'function');
     });
 
-    it('can be registered as winstone transport', function() {
+    it('can be registered as winston transport', function() {
       var logger = new(winston.Logger)({
         exitOnError: false,
         transports: [new(WinstonGraylog2)()]
