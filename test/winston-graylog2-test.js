@@ -1,35 +1,45 @@
-// winston-graylog2-test.js: Tests for instances of the graylog2 transport
+'use strict';
 
-var vows = require('vows');
 var assert = require('assert');
 var winston = require('winston');
-var helpers = require('winston/test/helpers');
-var Graylog2 = require('../lib/winston-graylog2').Graylog2;
+var WinstonGraylog2 = require('../lib/winston-graylog2.js');
 
-var transport = new (Graylog2)({graylogHostname: 'localhost'});
+describe('winstone-graylog2', function() {
+  describe('Creating the trasport', function() {
 
-function assertGraylog2 (transport) {
-  assert.instanceOf(transport, Graylog2);
-  assert.isFunction(transport.log);
-}
+    it('Have default properties when instantiated', function() {
+      var winstonGraylog2 = new(WinstonGraylog2)();
 
-vows.describe('winston-graylog2').addBatch({
- "An instance of the Mail Transport": {
-   "should have the proper methods defined": function () {
-     assertGraylog2(transport);
-   },
-   "the log() method": helpers.testNpmLevels(transport, "should log messages to Graylog2", function (ign, err, logged) {
-     assert.isTrue(!err);
-     assert.isTrue(logged);
-   }),
-   "should not throw error on circular objects": function () {
-      var a = {};
-      var b = {};
-      a.b = b;
-      b.a = a;
-      assert.doesNotThrow(function(){
-        transport.log( "error", a, b, function(){});
-      }, Error );
-   }
- }
-}).export(module);
+      assert.ok(winstonGraylog2.name === 'graylog2');
+      assert.ok(winstonGraylog2.level === 'info');
+      assert.ok(winstonGraylog2.silent === false);
+      assert.ok(winstonGraylog2.handleExceptions === false);
+    });
+
+    it('should have a log function', function() {
+      var winstonGraylog2 = new(WinstonGraylog2)();
+      assert.ok(typeof winstonGraylog2.log === 'function');
+    });
+
+    it('can be registered as winstone transport', function() {
+      var logger = new(winston.Logger)({
+        exitOnError: false,
+        transports: [new(WinstonGraylog2)()]
+      });
+
+      assert.ok(logger.transports.hasOwnProperty('graylog2'));
+    });
+
+    it('can be registered as winston transport using the add() function', function() {
+      var logger = new(winston.Logger)({
+        exitOnError: false,
+        transports: []
+      });
+
+      logger.add(WinstonGraylog2);
+
+      assert.ok(logger.transports.hasOwnProperty('graylog2'));
+    });
+
+  });
+});
