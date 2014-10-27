@@ -1,24 +1,48 @@
 {
   "name": "winston-graylog2",
   "description": "A graylog2 transport for winston",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "author": "Started by: Flite, Inc. http://www.flite.com, mantained by: Namshi http://namshi.com",
   "contributors": [
-    {"name": "Luciano Colosio"},
-    {"name": "Phil Kates"},
-    {"name": "Clay Smith"},
-    {"name": "krivchun"},
-    {"name": "Ville Lautanala"},
-    {"name": "Alessandro Nadalin"},
-    {"name": "Róbert Oroszi"},
-    {"name": "Clay Smith"},
-    {"name": "Arttu Tervo"}
+    {
+      "name": "Luciano Colosio"
+    },
+    {
+      "name": "Phil Kates"
+    },
+    {
+      "name": "Clay Smith"
+    },
+    {
+      "name": "krivchun"
+    },
+    {
+      "name": "Ville Lautanala"
+    },
+    {
+      "name": "Alessandro Nadalin"
+    },
+    {
+      "name": "Róbert Oroszi"
+    },
+    {
+      "name": "Clay Smith"
+    },
+    {
+      "name": "Arttu Tervo"
+    }
   ],
   "repository": {
     "type": "git",
     "url": "http://github.com/flite/winston-graylog2.git"
   },
-  "keywords": ["logging", "sysadmin", "tools", "winston", "graylog2"],
+  "keywords": [
+    "logging",
+    "sysadmin",
+    "tools",
+    "winston",
+    "graylog2"
+  ],
   "dependencies": {
     "winston": "^0.7.3",
     "graylog2": "^0.1.3"
