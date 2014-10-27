@@ -10,10 +10,10 @@
 >
 > :-)
 
-A [graylog2][2] transport for [winston][0]. Inspired by [winston-mail][1] transport and [node-graylog][3].
+A [graylog2][0] transport for [winston][1] based on the [node-graylog2][2] Library
 
 ## Installation
-Tested on node-0.6.x, requires npm.
+Tested on node-0.10.x, requires npm.
 
 ``` sh
   $ npm install winston
@@ -21,23 +21,70 @@ Tested on node-0.6.x, requires npm.
 ```
 
 ## Usage
-``` js
+```javascript
   var winston = require('winston');
-  winston.add(require('winston-graylog2').Graylog2, options);
+  winston.add(require('winston-graylog2'), options);
 
 ```
 
-Options are the following:
+or
 
-* __level:__ Level of messages this transport should log. (default: info)
-* __silent:__ Boolean flag indicating whether to suppress output. (default: false)
+```javascript
+var WinstonGraylog2 = require('winston-graylog2');
+var logger = new(winston.Logger)({
+        exitOnError: false,
+        transports: [new(WinstonGraylog2)(options)]
+      });
+```
 
-* __graylogHost:__ IP address or hostname of the graylog2 server. (default: localhost)
-* __graylogPort:__ Port to send messages to on the graylog2 server. (default: 12201)
-* __graylogHostname:__ The hostname associated with graylog2 messages. (default: require('os').hostname())
-* __graylogFacility:__ The graylog2 facility to send log messages.. (default: nodejs)
+## Options
+
+* __name__:  Transport name
+* __level__: Level of messages this transport should log. (default: info)
+* __silent__: Boolean flag indicating whether to suppress output. (default: false)
+* __handleExceptions__: Boolean flag, whenever to handle uncaught exceptions. (default: false)
+* __graylog__:
+  - __servers__; list of graylog2 servers
+    * __host__: your server address (default: localhost)
+    * __port__: your server port (default: 12201)
+  - __hostname__: the name of this host (default: os.hostname())
+  - __facility__: the facility for these log messages (default: "Node.js")
+  - __bufferSize__: max UDP packet size, should never exceed the MTU of your system (default: 1400)
+
+
+example:
+
+```javascript
+{
+  name: 'Graylog'
+  level: 'debug',
+  silent: false,
+  handleExceptions: false,
+  graylog: {
+    servers: [{host: 'localhost', port: 12201}, {host: 'remote.host', port: 12201}],
+    hostname: 'myServer',
+    facility: 'myAwesomeApp',
+    bufferSize: 1400
+  }
+}
+```
+
+## Log Levels
+Supported log levels, as from [node-graylog2][2], are the following
+
+Winston Level | Graylog2 level
+---------------|---------------
+emerg          | emergency
+alert          | alert
+crit           | critical
+error          | error
+warning        | warning
+notice         | notice
+info           | info
+debug          | debug
+
+**All other possibile winston's level, or custom levels, will default to `info`**
 
 [0]: https://github.com/flatiron/winston
-[1]: https://github.com/wavded/winston-mail
-[2]: http://www.graylog2.org
-[3]: https://github.com/egorFiNE/node-graylog
+[1]: http://www.graylog2.org
+[2]: https://github.com/Wizcorp/node-graylog2
