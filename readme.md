@@ -1,18 +1,9 @@
 # winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
 
-> This repository has just been transferred to the Namshi organization
-> as we're keen on giving some sort of support to it given 1. it was
-> deprecated (the previous maintainers didn't have the time) 2. we're
-> using graylog2 a lot so... :)
->
-> Expect us to come up with a few tweaks in the next few weeks
-> (in other words: ping us in Nov 2014)
->
-> :-)
-
 A [graylog2][0] transport for [winston][1] based on the [node-graylog2][2] Library
 
 ## Installation
+
 Tested on node-0.10.x, requires npm.
 
 ``` sh
