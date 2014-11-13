@@ -13,7 +13,6 @@ describe('winstone-graylog2', function() {
       assert.ok(winstonGraylog2.name === 'graylog2');
       assert.ok(winstonGraylog2.level === 'info');
       assert.ok(winstonGraylog2.silent === false);
-      assert.ok(typeof winstonGraylog2.levelMap === 'object');
       assert.ok(typeof winstonGraylog2.getMessageLevel==='function');
       assert.ok(typeof winstonGraylog2.graylog2==='object');
       assert.ok(winstonGraylog2.handleExceptions === false);
