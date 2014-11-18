@@ -76,6 +76,6 @@ debug          | debug
 
 **All other possibile winston's level, or custom levels, will default to `info`**
 
-[0]: https://github.com/flatiron/winston
-[1]: http://www.graylog2.org
+[0]: http://www.graylog2.org
+[1]: https://github.com/flatiron/winston
 [2]: https://github.com/Wizcorp/node-graylog2
