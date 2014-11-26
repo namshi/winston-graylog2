@@ -25,7 +25,9 @@ describe('winstone-graylog2', function() {
           warn:"warning",
           fatal:"emergency",
           someCustomLevel:"info",
-          someOtherCustomLevel:"error"
+          someOtherCustomLevel:"error",
+          error:"debug",
+          notice:"warning"
         }});
       assert.ok(typeof winstonGraylog2.getMessageLevel()==='string','Test for empty parameter');
       assert.ok(winstonGraylog2.getMessageLevel(230)==='info','Test for non string parameter');
@@ -33,6 +35,8 @@ describe('winstone-graylog2', function() {
       assert.ok(winstonGraylog2.getMessageLevel('someCustomLevel')==='info','Test for parameter provided in levelMap');
       assert.ok(winstonGraylog2.getMessageLevel('someOtherCustomLevel')==='error','Test for parameter provided in levelMap');
       assert.ok(winstonGraylog2.getMessageLevel('weirdLevel')==='info','Test for parameter not provided in levelMap');
+      assert.ok(winstonGraylog2.getMessageLevel('error')==='debug','Test for override of default Parameter');
+      assert.ok(winstonGraylog2.getMessageLevel('notice')==='warning','Test for override of default Parameter');
 
       var winstonGraylog2 = new(WinstonGraylog2)({
         levelMap:{
