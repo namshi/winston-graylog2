@@ -50,6 +50,7 @@
     "winston",
     "graylog2"
   ],
+  "license": "MIT",
   "main": "./lib/winston-graylog2",
   "repository": {
     "type": "git",
