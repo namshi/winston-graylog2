@@ -34,6 +34,7 @@ var logger = new(winston.Logger)({
 * __level__: Level of messages this transport should log. (default: info)
 * __silent__: Boolean flag indicating whether to suppress output. (default: false)
 * __handleExceptions__: Boolean flag, whenever to handle uncaught exceptions. (default: false)
+* __prelog__: Pre-filtering function, to clean message before sending to graylog2 (default: empty function)
 * __graylog__:
   - __servers__; list of graylog2 servers
     * __host__: your server address (default: localhost)
@@ -51,6 +52,9 @@ example:
   level: 'debug',
   silent: false,
   handleExceptions: false,
+  prelog: function(msg) {
+    return msg.trim();
+  },
   graylog: {
     servers: [{host: 'localhost', port: 12201}, {host: 'remote.host', port: 12201}],
     hostname: 'myServer',

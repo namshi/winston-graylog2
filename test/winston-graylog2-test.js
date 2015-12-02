@@ -37,17 +37,17 @@ describe('winstone-graylog2', function() {
     });
 
     it('should be able to set prelog function', function(done) {
-      var newMsg = 'test';
+      var msg = '  test  ';
       var winstonGraylog2 = new(WinstonGraylog2)({
-        prelog: function() {
-          return newMsg;
+        prelog: function(msg) {
+          return msg.trim();
         }
       });
       winstonGraylog2.graylog2.info = function(data) {
-        assert.ok(newMsg === data);
+        assert.ok(data === 'test');
         done();
       };
-      winstonGraylog2.log('info', 'oldmessage', {}, function(){});
+      winstonGraylog2.log('info', msg, {}, function(){});
     });
 
     it('can be registered as winston transport', function() {
