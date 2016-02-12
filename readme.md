@@ -49,7 +49,7 @@ example:
 
 ```javascript
 {
-  name: 'Graylog'
+  name: 'Graylog',
   level: 'debug',
   silent: false,
   handleExceptions: false,
