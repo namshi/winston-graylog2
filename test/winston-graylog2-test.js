@@ -14,6 +14,14 @@ describe('winstone-graylog2', function() {
       assert.ok(winstonGraylog2.level === 'info');
       assert.ok(winstonGraylog2.silent === false);
       assert.ok(winstonGraylog2.handleExceptions === false);
+      assert.deepEqual(
+        winstonGraylog2.graylog, {
+          servers: [{
+            host: 'localhost',
+            port: 12201
+          }]
+        }
+      );
     });
 
     it('should have a log function', function() {
@@ -70,5 +78,17 @@ describe('winstone-graylog2', function() {
       assert.ok(logger.transports.hasOwnProperty('graylog2'));
     });
 
+    it('should set graylog configuration', function () {
+      var graylogOptions = {
+        servers: [{
+          host: 'somehost',
+          port: 22222
+        }]
+      };
+      var winstonGraylog2 = new(WinstonGraylog2)({
+        graylog: graylogOptions
+      });
+      assert.deepEqual(winstonGraylog2.graylog, graylogOptions);
+    });
   });
 });
