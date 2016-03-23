@@ -42,7 +42,7 @@ var logger = new(winston.Logger)({
   - __hostname__: the name of this host (default: os.hostname())
   - __facility__: the facility for these log messages (default: "Node.js")
   - __bufferSize__: max UDP packet size, should never exceed the MTU of your system (default: 1400)
-  - __staticMeta__: meta data to be always used by each logging message, for instance environment (development, staging, live)
+* __staticMeta__: meta data to be always used by each logging message, for instance environment (development, staging, live)
 
 
 example:
@@ -60,9 +60,9 @@ example:
     servers: [{host: 'localhost', port: 12201}, {host: 'remote.host', port: 12201}],
     hostname: 'myServer',
     facility: 'myAwesomeApp',
-    bufferSize: 1400,
-    staticMeta: {env: 'staging'}
+    bufferSize: 1400
   }
+  staticMeta: {env: 'staging'}
 }
 ```
 
