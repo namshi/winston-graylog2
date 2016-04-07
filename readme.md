@@ -35,6 +35,7 @@ var logger = new(winston.Logger)({
 * __silent__: Boolean flag indicating whether to suppress output. (default: false)
 * __handleExceptions__: Boolean flag, whenever to handle uncaught exceptions. (default: false)
 * __prelog__: Pre-filtering function, to clean message before sending to graylog2 (default: empty function)
+* __processMeta__: Metadata post-filtering function, to clean the metadata (stack traces, process info) before sending them to graylog2 (default: empty function)
 * __graylog__:
   - __servers__; list of graylog2 servers
     * __host__: your server address (default: localhost)

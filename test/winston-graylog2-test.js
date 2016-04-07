@@ -90,5 +90,27 @@ describe('winstone-graylog2', function() {
       });
       assert.deepEqual(winstonGraylog2.graylog, graylogOptions);
     });
+
+    it('should have a processMeta function', function(){
+      var winstonGraylog2 = new(WinstonGraylog2)();
+      assert.ok(typeof winstonGraylog2.processMeta === 'function');
+    });
+
+    it('should be able to set the processMeta function', function(){
+      var extension = {foo: 'bar'};
+      var winstonGraylog2 = new (WinstonGraylog2)({
+        processMeta: function(meta){
+            meta.testAttribute = extension;
+            delete meta.baz;
+            return meta;
+        }
+      });
+      winstonGraylog2.graylog2.info = function(msg, _, meta){
+        assert.equal(extension, meta.testAttribute);
+        assert.equal(undefined, meta.baz);
+      };
+
+      winstonGraylog2.log('info', 'alog', {baz: 'boo'}, function(){});
+    });
   });
 });
