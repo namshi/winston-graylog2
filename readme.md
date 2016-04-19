@@ -61,7 +61,7 @@ example:
     hostname: 'myServer',
     facility: 'myAwesomeApp',
     bufferSize: 1400
-  }
+  },
   staticMeta: {env: 'staging'}
 }
 ```
