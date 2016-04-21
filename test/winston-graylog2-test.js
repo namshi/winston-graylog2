@@ -7,7 +7,7 @@ var WinstonGraylog2 = require('../lib/winston-graylog2.js');
 describe('winstone-graylog2', function() {
   describe('Creating the trasport', function() {
 
-    it('Have default properties when instantiated', function() {
+    it('should have default properties when instantiated', function() {
       var winstonGraylog2 = new(WinstonGraylog2)();
 
       assert.ok(winstonGraylog2.name === 'graylog2');
@@ -22,6 +22,35 @@ describe('winstone-graylog2', function() {
           }]
         }
       );
+    });
+
+    it('should allow properties to be set when instantiated', function() {
+      var options = {
+        name: 'not-default',
+        level: 'not-default',
+        graylog: {
+          servers: [{
+            host: '127.0.0.1',
+            port: 12202
+          }]
+        }
+      };
+      var winstonGraylog2 = new(WinstonGraylog2)(options);
+
+      assert.ok(winstonGraylog2.name === options.name);
+      assert.ok(winstonGraylog2.level === options.level);
+      assert.deepEqual(winstonGraylog2.graylog, options.graylog);
+    });
+
+    it('should allow Winston properties to be set when instantiated', function() {
+      var options = {
+        handleExceptions: true,
+        exceptionsLevel: 'not-default'
+      };
+      var winstonGraylog2 = new(WinstonGraylog2)(options);
+
+      assert.ok(winstonGraylog2.handleExceptions === options.handleExceptions);
+      assert.ok(winstonGraylog2.exceptionsLevel === options.exceptionsLevel);
     });
 
     it('should have a log function', function() {
