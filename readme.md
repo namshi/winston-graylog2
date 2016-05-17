@@ -77,6 +77,7 @@ alert          | alert
 crit           | critical
 error          | error
 warning        | warning
+warn           | warning
 notice         | notice
 info           | info
 debug          | debug
