@@ -11,7 +11,7 @@ describe('winstone-graylog2', function() {
       var winstonGraylog2 = new(WinstonGraylog2)();
 
       assert.ok(winstonGraylog2.name === 'graylog2');
-      assert.ok(winstonGraylog2.level === 'info');
+      assert.ok(winstonGraylog2.level === undefined);
       assert.ok(winstonGraylog2.silent === false);
       assert.ok(winstonGraylog2.handleExceptions === false);
       assert.deepEqual(
