@@ -1,7 +1,7 @@
 {
   "name": "winston-graylog2",
   "description": "A graylog2 transport for winston",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "Started by: Flite, Inc. http://www.flite.com, mantained by: Namshi http://namshi.com",
   "contributors": [
     {
