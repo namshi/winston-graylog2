@@ -67,6 +67,7 @@
     "url": "http://github.com/flite/winston-graylog2.git"
   },
   "scripts": {
-    "test": "mocha -b"
+    "test": "mocha -b",
+    "lint": "eslint lib/ test/"
   }
 }
