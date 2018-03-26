@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('assert');
-var winston = require('winston');
-var WinstonGraylog2 = require('../lib/winston-graylog2.js');
+const assert = require('assert');
+const winston = require('winston');
+const WinstonGraylog2 = require('../lib/winston-graylog2.js');
 
 describe('winstone-graylog2', function() {
   describe('Creating the trasport', function() {
