@@ -1,4 +1,6 @@
-# winston-graylog2 [![Build Status](https://secure.travis-ci.org/flite/winston-graylog2.png)](http://travis-ci.org/flite/winston-graylog2)
+[![Build Status](https://secure.travis-ci.org/namshi/winston-graylog2.png)](http://travis-ci.org/namshi/winston-graylog2)
+
+# winston-graylog2 
 
 > LOOKING FOR A MAINTAINER!
 >
