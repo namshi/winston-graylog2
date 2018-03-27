@@ -44,7 +44,11 @@
     "winston": "^2.4.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "mocha": "*",
+    "prettier": "^1.11.1"
   },
   "engines": {
     "node": ">= 0.10.0"
@@ -63,6 +67,7 @@
     "url": "http://github.com/flite/winston-graylog2.git"
   },
   "scripts": {
-    "test": "mocha -b"
+    "test": "mocha -b",
+    "lint": "eslint lib/ test/"
   }
 }
