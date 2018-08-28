@@ -39,7 +39,6 @@
     }
   ],
   "dependencies": {
-    "@types/winston": "^2.3.9",
     "graylog2": "^0.2.1",
     "lodash": "^4.17.5",
     "winston": "^2.4.0"
