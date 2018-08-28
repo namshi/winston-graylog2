@@ -14,7 +14,7 @@ declare namespace WinstonGraylog2 {
   }
 
   type Prelog = {
-    (message: string): void;
+    (message: string): string;
   }
 
   type LogMessageMeta = {
