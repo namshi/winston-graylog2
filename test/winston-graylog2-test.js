@@ -59,26 +59,26 @@ describe('winstone-graylog2', function() {
       assert.ok(typeof winstonGraylog2.log === 'function');
     });
 
-    it('should have prelog function', function() {
+    it('should have formatter function', function() {
       let winstonGraylog2 = new WinstonGraylog2();
-      assert.ok(typeof winstonGraylog2.prelog === 'function');
+      assert.ok(typeof winstonGraylog2.formatter === 'undefined');
     });
 
-    it('should have filter by prelog function', function(done) {
+    it('should have filter by formatter function', function(done) {
       let msg = 'test';
       let winstonGraylog2 = new WinstonGraylog2();
       winstonGraylog2.graylog2.info = function(data) {
-        assert.ok(msg === data);
+        assert.ok(data.indexOf(msg) !== -1);
         done();
       };
       winstonGraylog2.log('info', msg, {}, function() {});
     });
 
-    it('should be able to set prelog function', function(done) {
+    it('should be able to set formatter function', function(done) {
       let msg = '  test  ';
       let winstonGraylog2 = new WinstonGraylog2({
-        prelog: function(msg) {
-          return msg.trim();
+        formatter: function(args) {
+          return args.message.trim();
         },
       });
       winstonGraylog2.graylog2.info = function(data) {
