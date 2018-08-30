@@ -2,10 +2,6 @@
 
 # winston-graylog2 
 
-> LOOKING FOR A MAINTAINER!
->
-> Do you use / like this library? Reach out as we're looking for a maintainer -- we're not actively using this anymore and wouldn't mind leaving it in good hands :)
-
 A [graylog2][0] transport for [winston][1] based on the [node-graylog2][2] Library
 
 ## Installation
