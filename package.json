@@ -41,15 +41,15 @@
   "dependencies": {
     "graylog2": "^0.2.1",
     "lodash": "^4.17.5",
-    "winston": "^2.4.0",
-    "winston-transport": "^4.2.0"
+    "winston": "^3.1.0",
+    "winston-transport": "^4.3.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-google": "^0.9.1",
-    "eslint-plugin-prettier": "^2.6.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
+    "eslint": "^5.11.1",
+    "eslint-config-google": "^0.11.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
     "mocha": "*",
     "prettier": "^1.11.1"
   },
