@@ -54,9 +54,18 @@ describe('winston-graylog2', function() {
       assert.ok(winstonGraylog2.exceptionsLevel === options.exceptionsLevel);
     });
 
-    it('should have a log function', function() {
+    it('should have a log function and functions for each logging level', function() {
       const winstonGraylog2 = new WinstonGraylog2();
       assert.ok(typeof winstonGraylog2.log === 'function');
+      assert.ok(typeof winstonGraylog2.emerg === 'function');
+      assert.ok(typeof winstonGraylog2.alert === 'function');
+      assert.ok(typeof winstonGraylog2.crit === 'function');
+      assert.ok(typeof winstonGraylog2.error === 'function');
+      assert.ok(typeof winstonGraylog2.warning === 'function');
+      assert.ok(typeof winstonGraylog2.warn === 'function');
+      assert.ok(typeof winstonGraylog2.notice === 'function');
+      assert.ok(typeof winstonGraylog2.info === 'function');
+      assert.ok(typeof winstonGraylog2.debug === 'function');
     });
 
     it('can be registered as winston transport', function() {
