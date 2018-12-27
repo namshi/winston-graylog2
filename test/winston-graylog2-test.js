@@ -4,7 +4,7 @@ const assert = require('assert');
 const winston = require('winston');
 const WinstonGraylog2 = require('../lib/winston-graylog2.js');
 
-describe('winstone-graylog2', function() {
+describe('winston-graylog2', function() {
   describe('Creating the trasport', function() {
     it('should have default properties when instantiated', function() {
       const winstonGraylog2 = new WinstonGraylog2();
@@ -89,23 +89,23 @@ describe('winstone-graylog2', function() {
     });
 
     it('can be registered as winston transport', function() {
-      const logger = new winston.Logger({
+      const logger = winston.createLogger({
         exitOnError: false,
         transports: [new WinstonGraylog2()],
       });
 
-      assert.ok(logger.transports.hasOwnProperty('graylog2'));
+      assert.ok(logger._readableState.pipes.hasOwnProperty('graylog2'));
     });
 
     it('can be registered as winston transport using the add() function', function() {
-      const logger = new winston.Logger({
+      const logger = winston.createLogger({
         exitOnError: false,
         transports: [],
       });
 
-      logger.add(WinstonGraylog2);
+      logger.add(new WinstonGraylog2());
 
-      assert.ok(logger.transports.hasOwnProperty('graylog2'));
+      assert.ok(logger._readableState.pipes.hasOwnProperty('graylog2'));
     });
 
     it('should set graylog configuration', function() {
@@ -121,28 +121,6 @@ describe('winstone-graylog2', function() {
         graylog: graylogOptions,
       });
       assert.deepEqual(winstonGraylog2.graylog, graylogOptions);
-    });
-
-    it('should have a processMeta function', function() {
-      const winstonGraylog2 = new WinstonGraylog2();
-      assert.ok(typeof winstonGraylog2.processMeta === 'function');
-    });
-
-    it('should be able to set the processMeta function', function() {
-      const extension = {foo: 'bar'};
-      const winstonGraylog2 = new WinstonGraylog2({
-        processMeta: function(meta) {
-          meta.testAttribute = extension;
-          delete meta.baz;
-          return meta;
-        },
-      });
-      winstonGraylog2.graylog2.info = function(msg, _, meta) {
-        assert.equal(extension, meta.testAttribute);
-        assert.equal(undefined, meta.baz);
-      };
-
-      winstonGraylog2.log('info', 'alog', {baz: 'boo'}, function() {});
     });
   });
 });
