@@ -59,35 +59,6 @@ describe('winston-graylog2', function() {
       assert.ok(typeof winstonGraylog2.log === 'function');
     });
 
-    it('should have prelog function', function() {
-      const winstonGraylog2 = new WinstonGraylog2();
-      assert.ok(typeof winstonGraylog2.prelog === 'function');
-    });
-
-    it('should have filter by prelog function', function(done) {
-      const msg = 'test';
-      const winstonGraylog2 = new WinstonGraylog2();
-      winstonGraylog2.graylog2.info = function(data) {
-        assert.ok(msg === data);
-        done();
-      };
-      winstonGraylog2.log('info', msg);
-    });
-
-    it('should be able to set prelog function', function(done) {
-      const msg = '  test  ';
-      const winstonGraylog2 = new WinstonGraylog2({
-        prelog: function(msg) {
-          return msg.trim();
-        },
-      });
-      winstonGraylog2.graylog2.info = function(data) {
-        assert.ok(data === 'test');
-        done();
-      };
-      winstonGraylog2.log('info', msg);
-    });
-
     it('can be registered as winston transport', function() {
       const logger = winston.createLogger({
         exitOnError: false,
