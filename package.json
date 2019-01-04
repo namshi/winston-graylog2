@@ -54,7 +54,7 @@
     "prettier": "^1.11.1"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 8.0.0"
   },
   "keywords": [
     "logging",
