@@ -65,7 +65,7 @@ describe('winston-graylog2', function() {
         transports: [new WinstonGraylog2()],
       });
 
-      assert.ok(logger._readableState.pipes.hasOwnProperty('graylog2'));
+      assert.ok(logger._readableState.pipes.hasOwnProperty('graylog2Client'));
     });
 
     it('can be registered as winston transport using the add() function', function() {
@@ -76,7 +76,7 @@ describe('winston-graylog2', function() {
 
       logger.add(new WinstonGraylog2());
 
-      assert.ok(logger._readableState.pipes.hasOwnProperty('graylog2'));
+      assert.ok(logger._readableState.pipes.hasOwnProperty('graylog2Client'));
     });
 
     it('should set graylog configuration', function() {
