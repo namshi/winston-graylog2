@@ -6,6 +6,7 @@ A [graylog2][0] transport for [winston][1] based on the [node-graylog2][2] Libra
 
 ## Installation
 
+Tested on node-0.10.x, requires npm.
 Recently rewritten to use ES6 for better compatibility with Winston@3,
 so please use only with NodeJS >=8.
 
@@ -24,7 +25,7 @@ var winston = require('winston');
 var WinstonGraylog2 = require('winston-graylog2');
 
 var options = { ...<your config options here>... };
-winston.add(new winstonGraylog2(options));
+winston.add(new WinstonGraylog2(options));
 ```
 
 or
@@ -83,6 +84,46 @@ example:
 }
 ```
 
+## Upgrading from earlier versions of `winston-graylog2`
+
+Since `winston@3.x` relies heavily on a very powerful set of formatters there are a few formatting
+actions that `winston-graylog2` no longer needs to do. The two primary cases are the inclusion of
+a `meta` object, and converting errors so that the stack trace is included in the log message
+rather than just the name of the error.
+
+`winston@3.x` includes an excellent formatter for dealing with `meta`, conveniently named
+`metadata`. To use it, you can either grab it from the `winston.format` object, or use the one on
+`logform.format`. See [the metadata formatter docs](https://github.com/winstonjs/logform#metadata)
+for more details.
+
+For formatting Errors, `logform` (used under the hood by `winston.format` also includes an
+excellent formatter which gives you the option to include the stack trace in the logged message.
+**However**, the error formatter is only available with `logform@^2.1.0`, so at the time of this
+writing you must explicitly require it rather than using `winston.format`.
+
+In order to get functionality identical to earlier versions of `winston-graylog2`, use both of
+these formatters together with the json formatter.
+
+```javascript
+var winston = require('winston');
+var { format } require('logform');
+var WinstonGraylog2 = require('winston-graylog2');
+
+var options = { ...<your config options here>... };
+var logger = winston.createLogger({
+  exitOnError: false,
+  formatters: format.combine(
+    format.errorr({ stack: true }),
+    format.metadata(),
+  ),
+  transports: [
+    new WinstonGraylog2()  ],
+});
+
+logger.info({ message: 'this is an info message', meta: 42 });
+logger.error({ message: new Error(FakeError), meta: 96 });
+```
+
 ## Log Levels
 Supported log levels, as from [node-graylog2][2], are the following
 
@@ -98,7 +139,7 @@ notice         | notice
 info           | info
 debug          | debug
 
-**All other possibile winston's level, or custom levels, will default to `info`**
+**All other possible winston levels, or custom levels, will default to `info`**
 
 [0]: http://www.graylog2.org
 [1]: https://github.com/flatiron/winston
