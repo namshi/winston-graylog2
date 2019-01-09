@@ -6,7 +6,6 @@ A [graylog2][0] transport for [winston][1] based on the [node-graylog2][2] Libra
 
 ## Installation
 
-Tested on node-0.10.x, requires npm.
 Recently rewritten to use ES6 for better compatibility with Winston@3,
 so please use only with NodeJS >=8.
 
