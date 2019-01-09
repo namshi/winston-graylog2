@@ -61,7 +61,7 @@ var logger = winston.createLogger({
 
 Older versions of `winston-graylog2` allowed the __prelog__ and __processMeta__ options for
 pre-processing logs and metadata attached to messages (such as stack traces). Winston 3 has
-implemented independent, custom formatters for handling these things, and they are not longer
+implemented independent, custom formatters for handling these things, and they are no longer
 supported at the transport level.
 [See the Winston docs for details on formatters.](https://github.com/winstonjs/winston#formats)
 
@@ -95,7 +95,7 @@ rather than just the name of the error.
 `logform.format`. See [the metadata formatter docs](https://github.com/winstonjs/logform#metadata)
 for more details.
 
-For formatting Errors, `logform` (used under the hood by `winston.format` also includes an
+For formatting Errors, `logform` (used under the hood by `winston.format`) also includes an
 excellent formatter which gives you the option to include the stack trace in the logged message.
 **However**, the error formatter is only available with `logform@^2.1.0`, so at the time of this
 writing you must explicitly require it rather than using `winston.format`.
