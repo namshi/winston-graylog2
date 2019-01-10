@@ -101,7 +101,7 @@ excellent formatter which gives you the option to include the stack trace in the
 writing you must explicitly require it rather than using `winston.format`.
 
 In order to get functionality identical to earlier versions of `winston-graylog2`, use both of
-these formatters together with the json formatter.
+these formatters together.
 
 ```javascript
 var winston = require('winston');
@@ -116,7 +116,7 @@ var logger = winston.createLogger({
     format.metadata(),
   ),
   transports: [
-    new WinstonGraylog2()  ],
+    new WinstonGraylog2(options)  ],
 });
 
 logger.info({ message: 'this is an info message', meta: 42 });
