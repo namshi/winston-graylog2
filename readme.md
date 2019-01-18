@@ -7,7 +7,7 @@ A [graylog2][0] transport for [winston][1] based on the [node-graylog2][2] Libra
 ## Installation
 
 Recently rewritten to use ES6 for better compatibility with Winston@3,
-so please use only with NodeJS >=8.6.0.
+so please use only with NodeJS >=6.4.0.
 
 If you need to support older versions of Node, please use a version
 compatible with `^winston-graylog2@1.1.0`.

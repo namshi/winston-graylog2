@@ -53,7 +53,7 @@
     "prettier": "^1.11.1"
   },
   "engines": {
-    "node": ">= 8.6.0"
+    "node": ">= 6.4.0"
   },
   "keywords": [
     "logging",
