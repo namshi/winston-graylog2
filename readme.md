@@ -119,8 +119,13 @@ var logger = winston.createLogger({
     new WinstonGraylog2(options)  ],
 });
 
-logger.info({ message: 'this is an info message', meta: 42 });
-logger.error({ message: new Error(FakeError), meta: 96 });
+logger.info({ message: 'this is an info message', answer: 42 });
+// or equivalently
+logger.info('this is an info message', { answer: 42 });
+
+logger.error({ message: new Error(FakeError), somenumber: 96 });
+// or equivalently
+logger.error(new Error('FakeError'), { somenumber: 96 });
 ```
 
 ## Log Levels
