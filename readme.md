@@ -105,13 +105,13 @@ these formatters together.
 
 ```javascript
 var winston = require('winston');
-var { format } require('logform');
+var { format } = require('logform');
 var WinstonGraylog2 = require('winston-graylog2');
 
 var options = { ...<your config options here>... };
 var logger = winston.createLogger({
   exitOnError: false,
-  formatters: format.combine(
+  format: format.combine(
     format.errorr({ stack: true }),
     format.metadata(),
   ),
