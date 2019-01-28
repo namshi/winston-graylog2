@@ -124,7 +124,7 @@ logger.info({ message: 'this is an info message', answer: 42 });
 // or equivalently
 logger.info('this is an info message', { answer: 42 });
 
-logger.error({ message: new Error(FakeError), somenumber: 96 });
+logger.error({ message: new Error('FakeError'), somenumber: 96 });
 // or equivalently
 logger.error(new Error('FakeError'), { somenumber: 96 });
 ```
