@@ -1,6 +1,10 @@
-import {TransportStatic, TransportInstance} from "winston";
+import * as TransportStream from "winston-transport";
 
-declare namespace WinstonGraylog2 {
+declare class Graylog2Transport extends TransportStream {
+  constructor(options?: Graylog2Transport.TransportOptions);
+}
+
+declare namespace Graylog2Transport {
   type GraylogServer = {
     host: string;
     port: number;
@@ -13,41 +17,16 @@ declare namespace WinstonGraylog2 {
       bufferSize?: number;
   }
 
-  type Prelog = {
-    (message: string): string;
-  }
-
-  type LogMessageMeta = {
+  type StaticMeta = {
     [index: string]: any;
   }
 
-  type ProcessMeta = {
-    (meta: LogMessageMeta): LogMessageMeta
-  }
-
-  type TransportOptions = {
-    graylog?: GraylogOptions;
-    level?: string;
+  interface TransportOptions extends TransportStream.TransportStreamOptions {
     name?: string;
-    silent?: boolean;
-    handleExceptions?: boolean;
-    prelog?: Prelog;
-    processMeta?: ProcessMeta;
-    staticMeta?: LogMessageMeta;
-  }
-
-  interface Graylog2TransportInstance extends TransportInstance {
-    graylog: GraylogOptions;
-    prelog: Prelog;
-    processMeta: ProcessMeta;
-    staticMeta: LogMessageMeta;
-  }
-
-  interface Graylog2TransportStatic extends TransportStatic {
-    new(options?: TransportOptions): Graylog2TransportInstance;
+    exceptionsLevel?: string;
+    graylog?: GraylogOptions;
+    staticMeta?: StaticMeta;
   }
 }
 
-declare const WinstonGraylog2: WinstonGraylog2.Graylog2TransportInstance;
-
-export = WinstonGraylog2;
+export = Graylog2Transport;
