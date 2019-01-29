@@ -92,27 +92,28 @@ rather than just the name of the error.
 
 `winston@3.x` includes an excellent formatter for dealing with `meta`, conveniently named
 `metadata`. To use it, you can either grab it from the `winston.format` object, or use the one on
-`logform.format`. See [the metadata formatter docs](https://github.com/winstonjs/logform#metadata)
+`logform.format`. See [the metadata formatter docs](https://github.com/winstonjs/logform/tree/2.1.0#metadata)
 for more details.
 
-For formatting Errors, `logform` (used under the hood by `winston.format`) also includes an
-excellent formatter which gives you the option to include the stack trace in the logged message.
-**However**, the error formatter is only available with `logform@^2.1.0`, so at the time of this
-writing you must explicitly require it rather than using `winston.format`.
+For formatting Errors, `winston@3.2.0` includes the `errors` formatter. To use it, you can either
+grab it from the `winston.format` object, or use the one on `logform.format`. If you want to include
+the stack trace in the log message, be sure to pass this formatter the `{ stack: true }` option. See
+[the errrors formatter docs](https://github.com/winstonjs/logform/tree/2.1.0#errors)
+for more details.
 
 In order to get functionality identical to earlier versions of `winston-graylog2`, use both of
 these formatters together.
 
 ```javascript
 var winston = require('winston');
-var { format } = require('logform');
+var { format } = winston;
 var WinstonGraylog2 = require('winston-graylog2');
 
 var options = { ...<your config options here>... };
 var logger = winston.createLogger({
   exitOnError: false,
   format: format.combine(
-    format.errorr({ stack: true }),
+    format.errors({ stack: true }),
     format.metadata(),
   ),
   transports: [
@@ -123,7 +124,7 @@ logger.info({ message: 'this is an info message', answer: 42 });
 // or equivalently
 logger.info('this is an info message', { answer: 42 });
 
-logger.error({ message: new Error(FakeError), somenumber: 96 });
+logger.error({ message: new Error('FakeError'), somenumber: 96 });
 // or equivalently
 logger.error(new Error('FakeError'), { somenumber: 96 });
 ```
