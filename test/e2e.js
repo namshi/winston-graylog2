@@ -46,6 +46,10 @@ socket.on('listening', () => {
   let noticeCheck;
   let infoCheck;
   let debugCheck;
+  const listeners = [];
+  const notifyListeners = (msg) => {
+    listeners.forEach((listener) => listener(msg));
+  };
 
   socket.on('message', (msg) => {
     const message = JSON.parse(msg.toString());
@@ -57,6 +61,7 @@ socket.on('listening', () => {
     if (message.level === 5) noticeCheck = message;
     if (message.level === 6) infoCheck = message;
     if (message.level === 7) debugCheck = message;
+    notifyListeners(message);
   });
 
   logger.emerg('emergency dude');
@@ -97,6 +102,37 @@ socket.on('listening', () => {
     it('should send debug message with metadata', () => {
       assert.equal(debugCheck.short_message, 'debug something');
       assert.equal(debugCheck._everything, 1);
+    });
+    it('should send notice message with metadata', () => {
+      assert.equal(noticeCheck.short_message, 'notice me senpai');
+      assert.equal(noticeCheck._some, 'thing');
+    });
+    describe('Message handling', function() {
+      it('should send __id when id is in metadata', (done) => {
+        const id = Math.random();
+        const extra = {id};
+        const cb = (msg) => {
+          if (msg.__id === id) {
+            listeners.splice(listeners.find(cb), 1);
+            done();
+          }
+        };
+        listeners.push(cb);
+        logger.debug('', extra);
+      });
+      it('should send empty string for null message', (done) => {
+        const extra = {id: Math.random()};
+        const cb = (msg) => {
+          if (msg.__id === extra.id) {
+            assert.equal(msg.short_message, '');
+            assert.equal(msg.full_message, '');
+            listeners.splice(listeners.find(cb), 1);
+            done();
+          }
+        };
+        listeners.push(cb);
+        logger.debug(null, extra);
+      });
     });
     after(() => socket.close(done));
   });
