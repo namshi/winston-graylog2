@@ -13,6 +13,7 @@ describe('winston-graylog2', function() {
       assert.ok(winstonGraylog2.level === undefined);
       assert.ok(winstonGraylog2.silent === false);
       assert.ok(winstonGraylog2.handleExceptions === false);
+      assert.ok(winstonGraylog2.shortMessageLength === 100);
       assert.deepEqual(winstonGraylog2.graylog, {
         servers: [
           {
@@ -27,6 +28,7 @@ describe('winston-graylog2', function() {
       const options = {
         name: 'not-default',
         level: 'not-default',
+        shortMessageLength: 250,
         graylog: {
           servers: [
             {
@@ -40,6 +42,9 @@ describe('winston-graylog2', function() {
 
       assert.ok(winstonGraylog2.name === options.name);
       assert.ok(winstonGraylog2.level === options.level);
+      assert.ok(
+        winstonGraylog2.shortMessageLength === options.shortMessageLength
+      );
       assert.deepEqual(winstonGraylog2.graylog, options.graylog);
     });
 

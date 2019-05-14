@@ -7,6 +7,7 @@
   },
   "rules": {
     "quote-props": ["error", "as-needed"],
+    "indent": ["error", 2],
     "quotes": ["error", "single", { "avoidEscape": true }],
     "max-len": [
       "error",
