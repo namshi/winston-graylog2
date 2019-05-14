@@ -57,6 +57,7 @@ var logger = winston.createLogger({
   - __facility__: the facility for these log messages (default: "Node.js")
   - __bufferSize__: max UDP packet size, should never exceed the MTU of your system (default: 1400)
 * __staticMeta__: meta data to be always used by each logging message, for instance environment (development, staging, live)
+* __shortMessageLength__: how long should the graylog short message be
 
 
 Older versions of `winston-graylog2` allowed the __prelog__ and __processMeta__ options for
