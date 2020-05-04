@@ -13,6 +13,7 @@ const options = {
   name: 'wgl-example',
   level: 'debug',
   silent: false,
+  shortMessageLength: 120,
   graylog: {
     servers: [{host: 'localhost', port: 12201}],
   },
@@ -133,7 +134,22 @@ socket.on('listening', () => {
         listeners.push(cb);
         logger.debug(null, extra);
       });
+
+      it('should apply short message length', (done) => {
+        const extra = {id: Math.random()};
+        const cb = (msg) => {
+          if (msg.__id === extra.id) {
+            assert.equal(msg.short_message.length, 120);
+            assert.equal(msg.full_message.length, 150);
+            listeners.splice(listeners.find(cb), 1);
+            done();
+          }
+        };
+        listeners.push(cb);
+        logger.info('0'.repeat(150), extra);
+      });
     });
+
     after(() => socket.close(done));
   });
 });
