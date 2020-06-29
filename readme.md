@@ -42,6 +42,22 @@ var logger = winston.createLogger({
 });
 ```
 
+or in TypeScript:
+
+```typescript
+import { createLogger } from 'winston';
+import * as WinstonGraylog2 from 'winston-graylog2';
+
+const options = { ...<your config options here>... };
+const logger = createLogger({
+  transports: [
+    new WinstonGraylog2(options),
+  ],
+});
+
+logger.info(`tere`);
+```
+
 ## Options
 
 * __name__:  Transport name
