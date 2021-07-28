@@ -1,4 +1,4 @@
-import * as TransportStream from "winston-transport";
+import TransportStream = require('winston-transport');
 
 declare class Graylog2Transport extends TransportStream {
   constructor(options?: Graylog2Transport.TransportOptions);
